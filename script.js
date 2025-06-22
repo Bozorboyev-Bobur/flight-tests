@@ -8,6 +8,25 @@ const nextBtn = document.getElementById("next-btn");
 const resultContainer = document.getElementById("result-container");
 const scoreEl = document.getElementById("score");
 
+// Добавим подпись перед выбором количества вопросов
+const questionCountLabel = document.createElement("label");
+questionCountLabel.textContent = "Выберите количество вопросов:";
+questionCountLabel.setAttribute("for", "question-count");
+questionCountLabel.style.display = "block";
+questionCountLabel.style.marginTop = "15px";
+questionCountLabel.style.fontWeight = "bold";
+startBtn.before(questionCountLabel);
+
+const questionCountSelect = document.createElement("select");
+questionCountSelect.id = "question-count";
+[10, 20, 30, 50].forEach(num => {
+  const option = document.createElement("option");
+  option.value = num;
+  option.textContent = `${num} вопросов`;
+  questionCountSelect.appendChild(option);
+});
+startBtn.before(questionCountSelect);
+
 let questions = [];
 let currentQuestionIndex = 0;
 let score = 0;
@@ -30,12 +49,14 @@ function collectAllQuestions(data) {
 
 function startQuiz() {
   const allQuestions = collectAllQuestions(testData);
-  questions = shuffle(allQuestions).slice(0, 30);
+  const count = parseInt(document.getElementById("question-count").value);
+  questions = shuffle(allQuestions).slice(0, count);
   currentQuestionIndex = 0;
   score = 0;
   results = [];
   startBtn.classList.add("hidden");
   topicSelect.classList.add("hidden");
+  document.getElementById("question-count").classList.add("hidden");
   quizContainer.classList.remove("hidden");
   showQuestion();
 }
@@ -135,4 +156,4 @@ function showResult() {
 }
 
 startBtn.addEventListener("click", startQuiz);
-topicSelect.r
+topicSelect.remove();
