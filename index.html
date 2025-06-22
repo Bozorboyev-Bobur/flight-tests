@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тестирование бортпроводников</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Тест на знание</h1>
+    <select id="topic-select"></select>
+    <button id="start-btn">Начать тест</button>
+
+    <div id="quiz-container" class="hidden">
+      <div id="question-number"></div>
+      <div id="question-text"></div>
+      <div id="options"></div>
+      <button id="next-btn">Далее</button>
+    </div>
+
+    <div id="result-container" class="hidden">
+      <h2>Результаты</h2>
+      <p id="score"></p>
+      <button onclick="location.reload()">Пройти снова</button>
+    </div>
+  </div>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

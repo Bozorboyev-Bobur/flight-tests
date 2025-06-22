@@ -1,0 +1,72 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #e6f2ff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #004080;
+}
+
+select, button {
+  display: block;
+  width: 100%;
+  margin: 15px 0;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #f0f8ff;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #d9eaff;
+  cursor: pointer;
+}
+
+#options button {
+  display: block;
+  margin: 10px 0;
+  padding: 12px;
+  width: 100%;
+  font-size: 16px;
+  text-align: left;
+  border-radius: 6px;
+  background-color: #f7faff;
+  border: 1px solid #cce0ff;
+  transition: background-color 0.3s;
+}
+
+#options button:hover {
+  background-color: #dceeff;
+}
+
+.hidden {
+  display: none;
+}
+
+.option-btn.selected {
+  background-color: #cce5ff !important;
+  border: 2px solid #3399ff;
+}
+
+
+.result-item ul {
+  list-style: none;
+  padding-left: 0;
+}
+.result-item li {
+  margin: 4px 0;
+}
