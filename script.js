@@ -13,6 +13,8 @@ let currentQuestionIndex = 0;
 let score = 0;
 let selectedAnswer = null;
 let results = [];
+let timerInterval;
+let timeLeft = 30;
 
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
@@ -38,6 +40,21 @@ function startQuiz() {
   showQuestion();
 }
 
+function startTimer() {
+  const timerEl = document.getElementById("question-timer");
+  timeLeft = 30;
+  timerEl.textContent = `⏱ Осталось: ${timeLeft} сек.`;
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    timerEl.textContent = `⏱ Осталось: ${timeLeft} сек.`;
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      handleNextQuestion();
+    }
+  }, 1000);
+}
+
 function showQuestion() {
   selectedAnswer = null;
   let q = questions[currentQuestionIndex];
@@ -57,9 +74,15 @@ function showQuestion() {
     optionsContainer.appendChild(btn);
   }
   nextBtn.disabled = true;
+  startTimer();
 }
 
 nextBtn.addEventListener("click", () => {
+  clearInterval(timerInterval);
+  handleNextQuestion();
+});
+
+function handleNextQuestion() {
   let q = questions[currentQuestionIndex];
   if (selectedAnswer === q.correctAnswer) {
     score++;
@@ -76,7 +99,7 @@ nextBtn.addEventListener("click", () => {
   } else {
     showResult();
   }
-});
+}
 
 function showResult() {
   quizContainer.classList.add("hidden");
@@ -112,4 +135,4 @@ function showResult() {
 }
 
 startBtn.addEventListener("click", startQuiz);
-topicSelect.remove();
+topicSelect.r
